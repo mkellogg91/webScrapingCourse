@@ -14,11 +14,11 @@ BOT_NAME = 'craigslist'
 SPIDER_MODULES = ['craigslist.spiders']
 NEWSPIDER_MODULE = 'craigslist.spiders'
 
-
+FEED_EXPORT_ENCODING = 'utf-8'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'craigslist (+http://www.yourdomain.com)'
 USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
-FEED_EXPORT_ENCODING = 'utf-8'
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
@@ -65,9 +65,12 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'craigslist.pipelines.CraigslistPipeline': 300,
-#}
+# UNCOMMENT FIRST ITEM FOR MONGODB
+ITEM_PIPELINES = {
+    'craigslist.pipelines.MongodbPipeline': 300
+    # 'craigslist.pipelines.SQLlitePipeline': 300
+   
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
